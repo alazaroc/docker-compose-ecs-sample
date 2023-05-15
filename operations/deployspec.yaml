@@ -29,7 +29,7 @@ phases:
 
   build:
     commands:
-      - ACCOUNT_ID=${ACCOUNT_ID} REGION=${REGION} docker/docker compose -f docker-compose.yaml -f  docker-compose.prod.migrate.yaml -p ${PROJECT_NAME} up
+      - ACCOUNT_ID=${ACCOUNT_ID} REGION=${REGION} docker/docker compose -f docker-compose.yaml -f  docker-compose.prod.migrate.yaml -p ${PROJECT_NAME} up -d
 
   post_build:
     commands:

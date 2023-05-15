@@ -1,6 +1,6 @@
-# x-aws-vpc: "vpc-FILL_ME"
-# x-aws-cluster:ID
-# x-aws-loadbalancer: "test-alb" # load balancer "test-alb" is of type application, project require a network
+x-aws-vpc: "vpc-0a7d93c0e1c5118ec"
+x-aws-cluster: "ecs-cluster"
+x-aws-loadbalancer: "ecs-alb" # load balancer "ecs-alb" is of type application, project require a network
 x-aws-logs_retention: 7
 # x-aws-cloudformation:
 #   Resources:
@@ -24,9 +24,9 @@ x-aws-logs_retention: 7
 services:
   frontend:
     image: ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/example-app-frontend:latest
-    # ports:
-    #   - 3000:3000
-    #   - x-aws-protocol: http
+    ports:
+      - target: 3000
+        x-aws-protocol: http
   backend:
     image: ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/example-app-backend:latest
     logging:
